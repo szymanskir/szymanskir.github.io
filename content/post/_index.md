@@ -5,7 +5,7 @@ aliases:
 - blog
 - showcase
 - docs
-author: lee.so
+author: szymanskir
 tags:
 - index
 title: Posts
