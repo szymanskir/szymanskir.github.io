@@ -12,12 +12,6 @@ markup:
   goldmark:
     renderer:
       unsafe: yes
-menu:
-  main:
-    - identifier: about
-      name: About
-      url: /about/
-      weight: 10
 taxonomies:
   category: categories
   series: series
