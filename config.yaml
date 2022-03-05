@@ -1,0 +1,43 @@
+baseURL: /
+author: Ryszard Szymański
+languageCode: en
+DefaultContentLanguage: en
+enableInlineShortcodes: yes
+ignoreErrors: error-remote-getjson
+theme: hugo-paper
+title: Ryszard Szymański
+params:
+  github: szymanskir
+markup:
+  goldmark:
+    renderer:
+      unsafe: yes
+menu:
+  main:
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 10
+taxonomies:
+  category: categories
+  series: series
+  tag: tags
+privacy:
+  instagram:
+    disabled: no
+    simple: yes
+  twitter:
+    disabled: no
+    enableDNT: yes
+    simple: yes
+  vimeo:
+    disabled: no
+    simple: yes
+  youtube:
+    disabled: no
+    privacyEnhanced: yes
+services:
+  instagram:
+    disableInlineCSS: yes
+  twitter:
+    disableInlineCSS: yes
