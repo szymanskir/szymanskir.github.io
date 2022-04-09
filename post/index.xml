@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Ryszard Szymański</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 21 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Problem With Best Practices</title>
+      <link>/post/2022-04-09-the-problem-with-best-practices/</link>
+      <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2022-04-09-the-problem-with-best-practices/</guid>
+      <description>Introduction Best Practices is a term that I encounter often as a software engineer. Code reviews would be the situations where I would encounter the term most often, for example a colleague suggesting to do things differently and when asked about the advantages of their solution they would reply that it is a best practice. After some time I realized that we all should be more careful when using this term and start thinking more critically whenever we hear it.</description>
+    </item>
+    
     <item>
       <title>Be An Optimist</title>
       <link>/post/2022-03-21-be-an-optimist/</link>
