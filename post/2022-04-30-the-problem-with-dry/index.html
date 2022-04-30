@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>The Problem With DRY - Ryszard Szymański</title>
+
+  
+  
+  <meta name="description" content="What is the DRY principle about DRY stands for Don&rsquo;t Repeat Yourself and is a heuristic that each software engineer will encounter at some point during their career. An example of using this advice is abstracting repetitive code chunks into functions in your program. Robert C. Martin in Clean Code even states that duplicate code is the root of all evil. In this post I want to argue that DRY can lead to more harm than good when used blindly." />
+  <meta name="author" content="Ryszard Szymański" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="/an-old-hope.min.css" />
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.93.2" />
+
+  
+  
+
+  
+  
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-W0KNCRLXB3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W0KNCRLXB3"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-W0KNCRLXB3', { 'anonymize_ip': false });
+}
+</script>
+
+  
+  
+  
+  <meta property="og:title" content="The Problem With DRY" />
+<meta property="og:description" content="What is the DRY principle about DRY stands for Don&rsquo;t Repeat Yourself and is a heuristic that each software engineer will encounter at some point during their career. An example of using this advice is abstracting repetitive code chunks into functions in your program. Robert C. Martin in Clean Code even states that duplicate code is the root of all evil. In this post I want to argue that DRY can lead to more harm than good when used blindly." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2022-04-30-the-problem-with-dry/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-04-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-30T00:00:00+00:00" />
+
+
+  
+  <meta itemprop="name" content="The Problem With DRY">
+<meta itemprop="description" content="What is the DRY principle about DRY stands for Don&rsquo;t Repeat Yourself and is a heuristic that each software engineer will encounter at some point during their career. An example of using this advice is abstracting repetitive code chunks into functions in your program. Robert C. Martin in Clean Code even states that duplicate code is the root of all evil. In this post I want to argue that DRY can lead to more harm than good when used blindly."><meta itemprop="datePublished" content="2022-04-30T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-30T00:00:00+00:00" />
+<meta itemprop="wordCount" content="523">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The Problem With DRY"/>
+<meta name="twitter:description" content="What is the DRY principle about DRY stands for Don&rsquo;t Repeat Yourself and is a heuristic that each software engineer will encounter at some point during their career. An example of using this advice is abstracting repetitive code chunks into functions in your program. Robert C. Martin in Clean Code even states that duplicate code is the root of all evil. In this post I want to argue that DRY can lead to more harm than good when used blindly."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="/">Ryszard Szymański</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/szymanskir"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>Apr 30, 2022</time>
+      
+      
+      <span>Ryszard Szymański</span>
+      
+    </p>
+    <h1>The Problem With DRY</h1>
+  </header>
+  <section class="post-content"><h1 id="what-is-the-dry-principle-about">What is the DRY principle about</h1>
+<p>DRY stands for <em>Don&rsquo;t Repeat Yourself</em> and is a heuristic that each software engineer will encounter at some point during their career. An example of using this advice is abstracting repetitive code chunks into functions in your program. Robert C. Martin in <a href="https://www.goodreads.com/book/show/3735293-clean-code">Clean Code</a> even states that duplicate code is the <em>root of all evil</em>. In this post I want to argue that DRY can lead to more harm than good when used blindly.</p>
+<h1 id="my-problem-with-dry">My Problem With DRY</h1>
+<p>Don&rsquo;t get me wrong, DRY is good advice - you want to avoid obvious repetitions in your code. However, as with everything in software engineering, there are trade offs that we need to consider.</p>
+<p>I remember when I was writing code for the purpose of automating some business processes. During the implementation I noticed that parts of those processes are similar to each other. Therefore, I applied the DRY heuristic and abstracted away those repetitions with the aim of improving the quality of my code. However, later it turned out that those similarities were purely coincidental and that at their core, those processes were completely different.</p>
+<p>You can think of it as a <a href="https://en.wikipedia.org/wiki/False_equivalence">false equivalence</a> like for example thinking that both a car and motorcycle have engines, therefore you drive them the same way. As a result of this mistake, I have fallen into the trap described by Sandi Metz in <a href="https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction">this blogpost</a> of creating the wrong abstraction. This can have greater consequences than a bit of code repetition. You might feel inclined to keep the wrong abstraction due to the <a href="https://en.wikipedia.org/wiki/Sunk_cost">sunk cost fallacy</a>, leading to further amplifying the incorrect abstraction and worsening your design.</p>
+<p>Kent Beck acknowledges that in <a href="https://www.goodreads.com/book/show/387190.Test_Driven_Development">Test-Driven Development: By Example</a> and says <em>Duplication is always a bad thing, unless you look at it as motivation to find the missing design element</em>. Therefore, I believe that before blindly abstracting things away using DRY - you should ask yourself <em>Is this actually the right abstraction?</em></p>
+<p>Dave Farley in <a href="https://www.youtube.com/watch?v=cqKGDpnE4eY">this video</a> described another potential problem of applying the DRY principle to a microservice architecture. Imagine that you have developed two microservices and you notice that some logic is duplicated in both of them. You might think that it is a good idea to extract those repetitions into a library that will then become a dependency used by both of the microservices. The problem here is that you introduce <em>coupling</em> between the two microservices. In case it is required to modify the library for the need of one microservice, the change impacts the second microservice as well.</p>
+<p>Now, you have found yourself in a situation where you wanted to apply a microservices architecture to make your microservices independent (to be able to develop and deploy them independently) and now because of the <em>coupling</em> the microservices are indirectly dependent on each other through the shared library.</p>
+<h1 id="summary">Summary</h1>
+<p>DRY is good advice, but applied unconsciously can cause more harm than good. Therefore, next time you bring up DRY in a code review as an <em>ultimate truth</em> - ask yourself whether applying it is actually going to be beneficial in this case.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="/post/2022-04-18-self-care-boosts-productivity/"><span>Self-Care Boosts Productivity</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="/">Ryszard Szymański</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>

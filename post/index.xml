@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Ryszard Szymański</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 18 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Problem With DRY</title>
+      <link>/post/2022-04-30-the-problem-with-dry/</link>
+      <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2022-04-30-the-problem-with-dry/</guid>
+      <description>What is the DRY principle about DRY stands for Don&amp;rsquo;t Repeat Yourself and is a heuristic that each software engineer will encounter at some point during their career. An example of using this advice is abstracting repetitive code chunks into functions in your program. Robert C. Martin in Clean Code even states that duplicate code is the root of all evil. In this post I want to argue that DRY can lead to more harm than good when used blindly.</description>
+    </item>
+    
     <item>
       <title>Self-Care Boosts Productivity</title>
       <link>/post/2022-04-18-self-care-boosts-productivity/</link>
