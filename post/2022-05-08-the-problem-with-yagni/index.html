@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>The Problem With YAGNI - Ryszard Szymański</title>
+
+  
+  
+  <meta name="description" content="What is YAGNI about YAGNI stands for You aren&rsquo;t gonna need it and advises that you should only implement things, when you actually need them, and never when you foresee them being needed in the future. The idea is to avoid different kinds of problems that come with a premature implementation:
+ You might build the wrong thing - you wasted time on implementing that You might add unnecessary complexity to your code You used up time that could have been used on something that is actually needed now  However, at the same time we should be careful while using YAGNI as used blindly it might lead us to doing more harm than good." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="/an-old-hope.min.css" />
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.93.2" />
+
+  
+  
+
+  
+  
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-W0KNCRLXB3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+  
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W0KNCRLXB3"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-W0KNCRLXB3', { 'anonymize_ip': false });
+}
+</script>
+
+  
+  
+  
+  <meta property="og:title" content="The Problem With YAGNI" />
+<meta property="og:description" content="What is YAGNI about YAGNI stands for You aren&rsquo;t gonna need it and advises that you should only implement things, when you actually need them, and never when you foresee them being needed in the future. The idea is to avoid different kinds of problems that come with a premature implementation:
+ You might build the wrong thing - you wasted time on implementing that You might add unnecessary complexity to your code You used up time that could have been used on something that is actually needed now  However, at the same time we should be careful while using YAGNI as used blindly it might lead us to doing more harm than good." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2022-05-08-the-problem-with-yagni/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-05-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-08T00:00:00+00:00" />
+
+
+  
+  <meta itemprop="name" content="The Problem With YAGNI">
+<meta itemprop="description" content="What is YAGNI about YAGNI stands for You aren&rsquo;t gonna need it and advises that you should only implement things, when you actually need them, and never when you foresee them being needed in the future. The idea is to avoid different kinds of problems that come with a premature implementation:
+ You might build the wrong thing - you wasted time on implementing that You might add unnecessary complexity to your code You used up time that could have been used on something that is actually needed now  However, at the same time we should be careful while using YAGNI as used blindly it might lead us to doing more harm than good."><meta itemprop="datePublished" content="2022-05-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="583">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The Problem With YAGNI"/>
+<meta name="twitter:description" content="What is YAGNI about YAGNI stands for You aren&rsquo;t gonna need it and advises that you should only implement things, when you actually need them, and never when you foresee them being needed in the future. The idea is to avoid different kinds of problems that come with a premature implementation:
+ You might build the wrong thing - you wasted time on implementing that You might add unnecessary complexity to your code You used up time that could have been used on something that is actually needed now  However, at the same time we should be careful while using YAGNI as used blindly it might lead us to doing more harm than good."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="/">Ryszard Szymański</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/szymanskir"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>May 8, 2022</time>
+      
+      
+    </p>
+    <h1>The Problem With YAGNI</h1>
+  </header>
+  <section class="post-content"><h1 id="what-is-yagni-about">What is YAGNI about</h1>
+<p>YAGNI stands for <em>You aren&rsquo;t gonna need it</em> and advises that you should only implement things, when you actually need them, and never when you foresee them being needed in the future. The idea is to avoid different kinds of problems that come with a premature implementation:</p>
+<ol>
+<li>You might build the wrong thing - you wasted time on implementing that</li>
+<li>You might add unnecessary complexity to your code</li>
+<li>You used up time that could have been used on something that is actually needed now</li>
+</ol>
+<p>However, at the same time we should be careful while using YAGNI as used blindly it might lead us to doing more harm than good.</p>
+<h1 id="my-problem-with-yagni">My problem with YAGNI</h1>
+<p>Don&rsquo;t get me wrong, YAGNI is good advice - you want to avoid problems that come with a premature implementation. However, at the same time you should not forget about the expandability of software.</p>
+<p>Good examples of where not thinking about future expandability might lead to larger issues are Web APIs or configuration schemas (basically anything that can be considered <em>client facing</em>). Let&rsquo;s assume that you define a yaml configuration schema that initially supports defining a single object:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">field1</span>: <span style="color:#ae81ff">&lt;FIELD 1 VALUE&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">field2</span>: <span style="color:#ae81ff">&lt;FIELD 2 VALUE&gt;</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#f92672">fieldN</span>: <span style="color:#ae81ff">&lt;FIELD N VALUE&gt;</span>
+</span></span></code></pre></div><p>Imagine that during the implementation you start to wonder whether you should support the ability of defining multiple objects of the same type. However, you remain vigilant and remind yourself of the YAGNI principle and proceed with the initial implementation. After some time it turns out that there is a need to support the ability of defining multiple objects of the same type within the configuration like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">section</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">field1</span>: <span style="color:#ae81ff">&lt;FIELD 1 VALUE&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">field2</span>: <span style="color:#ae81ff">&lt;FIELD 2 VALUE&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">fieldN</span>: <span style="color:#ae81ff">&lt;FIELD N VALUE&gt;</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">field1</span>: <span style="color:#ae81ff">&lt;FIELD 1 VALUE&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">field2</span>: <span style="color:#ae81ff">&lt;FIELD 2 VALUE&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">fieldN</span>: <span style="color:#ae81ff">&lt;FIELD N VALUE&gt;</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">field1</span>: <span style="color:#ae81ff">&lt;FIELD 1 VALUE&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">field2</span>: <span style="color:#ae81ff">&lt;FIELD 2 VALUE&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">fieldN</span>: <span style="color:#ae81ff">&lt;FIELD N VALUE&gt;</span>
+</span></span></code></pre></div><p>What just happened here is a <strong>breaking change</strong> and this means that either:</p>
+<ol>
+<li>All clients need to conform to the new schema</li>
+<li>You need to continue supporting the previous version</li>
+</ol>
+<p>Wouldn&rsquo;t you wish that you started off with a schema that supported the initial use case, but remained flexible in case you needed to support the possibility of defining multiple object:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">section</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">field1</span>: <span style="color:#ae81ff">&lt;FIELD 1 VALUE&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">field2</span>: <span style="color:#ae81ff">&lt;FIELD 2 VALUE&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">...</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">fieldN</span>: <span style="color:#ae81ff">&lt;FIELD N VALUE&gt;</span>
+</span></span></code></pre></div><p>You may think that I am assuming the unlikely scenario of <em>foreseeing the right thing</em>. The point I am trying to make here is that we shouldn&rsquo;t use YAGNI blindly and we always should carefully think about the potential risks and consequences of our decision. In the example I described we might face two completely different scenarios:</p>
+<ol>
+<li>The schema is only used by a couple of internal teams - the cost of migrating those configurations to the new schema is low</li>
+<li>The scheme is used by millions of users - the cost of migrating those configurations is high</li>
+</ol>
+<p>Depending on your environment, thinking about those possible scenarios might result in you making a different decision compared to the one you would make while mindlessly using YAGNI.</p>
+<h1 id="summary">Summary</h1>
+<p>YAGNI is good advice, but it might do more harm than good in some situations. For example, while designing configuration schemas or Web APIs, we might end up with costly breaking changes as a consequence of blindly applying YAGNI. Therefore, next time you use YAGNI - think about potential risks and consequences that may come from applying it in your situation.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="/post/2022-05-02-3-strategies-for-testing-database-interactions-in-your-code/"><span>3 Strategies for Testing Database Interactions for Software Engineers</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="/">Ryszard Szymański</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>

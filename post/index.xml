@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Ryszard Szymański</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 02 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Problem With YAGNI</title>
+      <link>/post/2022-05-08-the-problem-with-yagni/</link>
+      <pubDate>Sun, 08 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2022-05-08-the-problem-with-yagni/</guid>
+      <description>What is YAGNI about YAGNI stands for You aren&amp;rsquo;t gonna need it and advises that you should only implement things, when you actually need them, and never when you foresee them being needed in the future. The idea is to avoid different kinds of problems that come with a premature implementation:
+ You might build the wrong thing - you wasted time on implementing that You might add unnecessary complexity to your code You used up time that could have been used on something that is actually needed now  However, at the same time we should be careful while using YAGNI as used blindly it might lead us to doing more harm than good.</description>
+    </item>
+    
     <item>
       <title>3 Strategies for Testing Database Interactions for Software Engineers</title>
       <link>/post/2022-05-02-3-strategies-for-testing-database-interactions-in-your-code/</link>
