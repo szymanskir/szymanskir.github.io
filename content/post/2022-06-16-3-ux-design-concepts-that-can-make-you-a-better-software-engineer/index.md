@@ -18,7 +18,7 @@ After reading the book I have realized that no matter if you are a backend or de
 
 In this blog post I want to describe three UX design concepts that you can use to start creating more user friendly products.
 
-# Concept #1: Feedback is important
+# Concept #1: Importance of feedback
 Have you ever gotten frustrated with an unclear error message while programming? You had no idea what is going on and it was driving you crazy?
 
 This is why any tool you are building should provide full, clear information about the results of an action and the current state of the product. For example, if you are building a command line interface, when a user forgets to supply a required argument, instead of providing a vague message like `Error: exception occured.`, try to be specific and helpful to your user `Error: required option '--num_threads' is missing. Run 'tool --help' to see a list of required arguments.`
