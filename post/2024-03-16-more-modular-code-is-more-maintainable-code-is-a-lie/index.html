@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>&#39;More modular code is more maintainable code&#39; is a lie - Ryszard Szymański</title>
+
+  
+  
+  <meta name="description" content="I often hear the following phrase &ldquo;thanks to doing ___ the code is now more modular and more maintainable&rdquo;. Sounds reasonable, but it doesn&rsquo;t capture the full picture.
+There are cases, when more modularity might make things less maintainable.
+First let&rsquo;s establish what I mean by maintainable. Maintainable code is code that is easy to change.
+Example 1: Extracting things into a separate package With that in mind, think about the following situation:" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="/an-old-hope.min.css" />
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.93.2" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="&#39;More modular code is more maintainable code&#39; is a lie" />
+<meta property="og:description" content="I often hear the following phrase &ldquo;thanks to doing ___ the code is now more modular and more maintainable&rdquo;. Sounds reasonable, but it doesn&rsquo;t capture the full picture.
+There are cases, when more modularity might make things less maintainable.
+First let&rsquo;s establish what I mean by maintainable. Maintainable code is code that is easy to change.
+Example 1: Extracting things into a separate package With that in mind, think about the following situation:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2024-03-16-more-modular-code-is-more-maintainable-code-is-a-lie/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-03-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-03-16T00:00:00+00:00" />
+
+
+  
+  <meta itemprop="name" content="&#39;More modular code is more maintainable code&#39; is a lie">
+<meta itemprop="description" content="I often hear the following phrase &ldquo;thanks to doing ___ the code is now more modular and more maintainable&rdquo;. Sounds reasonable, but it doesn&rsquo;t capture the full picture.
+There are cases, when more modularity might make things less maintainable.
+First let&rsquo;s establish what I mean by maintainable. Maintainable code is code that is easy to change.
+Example 1: Extracting things into a separate package With that in mind, think about the following situation:"><meta itemprop="datePublished" content="2024-03-16T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-03-16T00:00:00+00:00" />
+<meta itemprop="wordCount" content="672">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="&#39;More modular code is more maintainable code&#39; is a lie"/>
+<meta name="twitter:description" content="I often hear the following phrase &ldquo;thanks to doing ___ the code is now more modular and more maintainable&rdquo;. Sounds reasonable, but it doesn&rsquo;t capture the full picture.
+There are cases, when more modularity might make things less maintainable.
+First let&rsquo;s establish what I mean by maintainable. Maintainable code is code that is easy to change.
+Example 1: Extracting things into a separate package With that in mind, think about the following situation:"/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="/">Ryszard Szymański</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/szymanskir"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>Mar 16, 2024</time>
+      
+      
+    </p>
+    <h1>&#39;More modular code is more maintainable code&#39; is a lie</h1>
+  </header>
+  <section class="post-content"><p>I often hear the following phrase <em>&ldquo;thanks to doing ___ the code is now more modular and more maintainable&rdquo;</em>. Sounds reasonable, but it doesn&rsquo;t capture the full picture.</p>
+<p>There are cases, when more modularity might make things less maintainable.</p>
+<p>First let&rsquo;s establish what I mean by <em>maintainable</em>. Maintainable code is code that is easy to change.</p>
+<h2 id="example-1-extracting-things-into-a-separate-package">Example 1: Extracting things into a separate package</h2>
+<p>With that in mind, think about the following situation:</p>
+<ol>
+<li>You are building an app</li>
+<li>You implemented a functionality that might be reusable, so you extract it out into a separate package</li>
+<li>You put that package in a separate repository</li>
+<li>You get a new app requirement that requires you to change some of the logic that you extracted out of the package and additional changes on the app side as well</li>
+<li>Now, to implement that requirement you need to make 2 changes in 2 separate repositories</li>
+<li>You apply the change to the package and release a new version</li>
+<li>Now you can make a change to the app and bump the version of that package</li>
+</ol>
+<p>Now let&rsquo;s imagine we didn&rsquo;t extract a package out of that app. What would happen instead of steps from 5 to 7?</p>
+<p>Well, you would be able to submit a single PR that contains the same changes made in the previous scenario.</p>
+<p>We had good intentions, we wanted to make things more modular by keeping things tidy in their own separate packages.</p>
+<p>But as a consequence we made it harder to make changes to the app as now our feature implementation requires more steps.</p>
+<p>Imagine how difficult things would get, if we had 5 packages in different repos? In the worst case scenario we would need to make 6 changes (5 package repos + 1 app repo) to implement one functionality.</p>
+<p>On top of that, we will need to keep track of which package versions are compatible with which app version. This adds on additional complexity.</p>
+<p>A keen eye might notice that we could have used a monorepo structure instead. That means keep all packages and the app in a single repository. That would allow us to apply changes in multiple places in a single pull request.</p>
+<p>Some technologies provide tooling that makes it easy to keep an app and related packages in a single <em>container</em>. For example when using Visual Studio you have <a href="https://learn.microsoft.com/en-us/visualstudio/ide/solutions-and-projects-in-visual-studio?view=vs-2022">solutions that can contain multiple packages</a>.</p>
+<h2 id="example-2-keeping-styles-separate-from-your-components">Example 2: Keeping styles separate from your components</h2>
+<p>Another situation, where I faced issues with modularity, is keeping styles separate from components. For example having a dedicated folder for all your stylesheets like this:</p>
+<pre tabindex="0"><code>components/
+├─ buttons/
+│  ├─ button1.js
+├─ form_controls/
+│  ├─ form_control1.js
+
+stylesheets/
+├─ colors.css
+├─ styles1.css
+</code></pre><p>This might seem neat at first, but based on the file structure are you able to guess where the styles of <code>button1</code> are kept?</p>
+<p>Depending on the technology, you might be able to find that information based on the imports and your IDE features might even allow you to get to that file with a single click.</p>
+<p>Even if you have that option, the constant jump and forth between the component file and the stylesheets when implementing new changes can cause a large overhead.</p>
+<p>Also during code review, you look at a changed css file and need to figure out which components are being affected.</p>
+<p>That&rsquo;s why I personally prefer using utility-first CSS (like in <a href="https://tailwindcss.com/docs/utility-first">tailwind</a>), where I would have no separate files for my styles and just apply a set of class names to my component.</p>
+<p>Now, I have both my component code and it&rsquo;s styles in one file making it easier to make edits and review in pull requests.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>Making things more modular does not always make things more maintainable. It can actually make things less maintainable if not used properly.</p>
+<p>That&rsquo;s why when modularizing things, let&rsquo;s check if we are not accidentally making things harder to change in the future.</p>
+<p>A good heuristic to consider before <em>extracting things out into a separate module</em> is <em><strong><a href="https://www.baeldung.com/cs/cohesion-vs-coupling">&ldquo;the code that changes together, stays together”</a>.</strong></em></p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="/post/2022-06-16-3-ux-design-concepts-that-can-make-you-a-better-software-engineer/"><span>3 UX Design Concepts That Can Make You A Better Software Engineer</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2024 <a href="/">Ryszard Szymański</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>
