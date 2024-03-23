@@ -6,7 +6,18 @@
     <description>Recent content in Posts on Ryszard Szymański</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 16 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 23 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Continuous FYI - 6 Benefits of Keeping Everyone in the Loop</title>
+      <link>/post/2024-03-23-continuous-fyi-6-benefits-of-keeping-everyone-in-the-loop/</link>
+      <pubDate>Sat, 23 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2024-03-23-continuous-fyi-6-benefits-of-keeping-everyone-in-the-loop/</guid>
+      <description>As a software engineer I work in a team. We work together to achieve a common goal or set of goals.
+We can work faster by collaborating and leveraging synergy compared to a situation where we would be working separately without communicating with each other.
+Imagine a basketball team trying to run a play. We need everyone on the team to know that play and a point guard / coach, who will give a signal to run it.</description>
+    </item>
+    
     <item>
       <title>&#39;More modular code is more maintainable code&#39; is a lie</title>
       <link>/post/2024-03-16-more-modular-code-is-more-maintainable-code-is-a-lie/</link>
