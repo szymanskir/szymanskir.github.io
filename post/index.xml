@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Ryszard Szymański</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 13 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Stop Doing Large Rewrites</title>
+      <link>/post/2024-04-22-stop-doing-large-rewrites/</link>
+      <pubDate>Mon, 22 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2024-04-22-stop-doing-large-rewrites/</guid>
+      <description>You join a project, it’s an existing codebase. As you sit down you notice how messy and suboptimal things are.
+Those things slow you down to the point where you start feeling that it might be faster if you rewrite the whole thing from scratch instead of trying to implement it alongside the existing code.
+Well, it might not be that easy ;)
+In this post I’d like to explore different perspectives of rewriting software, show how risky of a bet that is and whether there are cases where it might indeed make sense.</description>
+    </item>
+    
     <item>
       <title>4 UX Design Inspired Tips to Improve your Communication Skills</title>
       <link>/post/2024-04-13-4-ux-inspired-tips-to-improve-your-communication-skills/</link>

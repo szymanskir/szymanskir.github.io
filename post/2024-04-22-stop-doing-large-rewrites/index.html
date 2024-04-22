@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>Stop Doing Large Rewrites - Ryszard Szymański</title>
+
+  
+  
+  <meta name="description" content="You join a project, it’s an existing codebase. As you sit down you notice how messy and suboptimal things are.
+Those things slow you down to the point where you start feeling that it might be faster if you rewrite the whole thing from scratch instead of trying to implement it alongside the existing code.
+Well, it might not be that easy ;)
+In this post I’d like to explore different perspectives of rewriting software, show how risky of a bet that is and whether there are cases where it might indeed make sense." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="/an-old-hope.min.css" />
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.93.2" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Stop Doing Large Rewrites" />
+<meta property="og:description" content="You join a project, it’s an existing codebase. As you sit down you notice how messy and suboptimal things are.
+Those things slow you down to the point where you start feeling that it might be faster if you rewrite the whole thing from scratch instead of trying to implement it alongside the existing code.
+Well, it might not be that easy ;)
+In this post I’d like to explore different perspectives of rewriting software, show how risky of a bet that is and whether there are cases where it might indeed make sense." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2024-04-22-stop-doing-large-rewrites/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-04-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-04-22T00:00:00+00:00" />
+
+
+  
+  <meta itemprop="name" content="Stop Doing Large Rewrites">
+<meta itemprop="description" content="You join a project, it’s an existing codebase. As you sit down you notice how messy and suboptimal things are.
+Those things slow you down to the point where you start feeling that it might be faster if you rewrite the whole thing from scratch instead of trying to implement it alongside the existing code.
+Well, it might not be that easy ;)
+In this post I’d like to explore different perspectives of rewriting software, show how risky of a bet that is and whether there are cases where it might indeed make sense."><meta itemprop="datePublished" content="2024-04-22T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-04-22T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1421">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Stop Doing Large Rewrites"/>
+<meta name="twitter:description" content="You join a project, it’s an existing codebase. As you sit down you notice how messy and suboptimal things are.
+Those things slow you down to the point where you start feeling that it might be faster if you rewrite the whole thing from scratch instead of trying to implement it alongside the existing code.
+Well, it might not be that easy ;)
+In this post I’d like to explore different perspectives of rewriting software, show how risky of a bet that is and whether there are cases where it might indeed make sense."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="/">Ryszard Szymański</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/szymanskir"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>Apr 22, 2024</time>
+      
+      
+    </p>
+    <h1>Stop Doing Large Rewrites</h1>
+  </header>
+  <section class="post-content"><p>You join a project, it’s an existing codebase. As you sit down you notice how messy and suboptimal things are.</p>
+<p>Those things slow you down to the point where you start feeling that <em>it might be faster if you rewrite the whole thing from scratch instead of trying to implement it alongside the existing code</em>.</p>
+<p>Well, it might not be that easy ;)</p>
+<p>In this post I’d like to explore different perspectives of rewriting software, show how risky of a bet that is and whether there are cases where it might indeed make sense.</p>
+<h2 id="factors-to-consider">Factors to Consider</h2>
+<p>Before deciding on the rewrite it’s important to consider:</p>
+<ol>
+<li>Why do we want a rewrite?</li>
+<li>How large the codebase is and how long did it take to implement it?</li>
+<li>Was the code written by the same team that will be doing the rewrite?</li>
+<li>Is the code currently used?</li>
+<li>How often do we anticipate the codebase to change?</li>
+</ol>
+<p>These factors are not mutually exclusive and can impact each other. Let’s look at them one by one.</p>
+<h3 id="factor-1-why-do-we-want-a-rewrite">Factor 1: Why Do We Want a Rewrite</h3>
+<p>There might be different reasons for considering a rewrite. I most often hear about a rewrite in the context of refactoring legacy code.</p>
+<p>However, there can be other cases, like for example you:</p>
+<ol>
+<li>hit a limitation of the technology you are using</li>
+<li>see a benefit of switching to a different technology</li>
+<li>use a technology that is getting deprecated</li>
+</ol>
+<p>This will guide us in learning on what are the anticipated benefits of the rewrite.</p>
+<p>In the case refactoring I usually hear <em>it will make the code more maintainable and easier the change leading to lowered costs</em>.</p>
+<p>When a rewrite is caused by a change of the technology this might be to:</p>
+<ol>
+<li>improve performance (see <a href="https://discord.com/blog/why-discord-is-switching-from-go-to-rust">Why Discord is switching from Go to Rust?</a>)</li>
+<li>cut down costs and lower risks e.g. developers of a deprecated technology might be more expensive and less available, a deprecated technology might also mean no security patches</li>
+</ol>
+<h3 id="factor-2-how-large-the-codebase-is">Factor 2: How Large the Codebase Is</h3>
+<p>If we want to rewrite the whole codebase we should be aware of how large it is. Or better how long did it take to implement it.</p>
+<p>This will tell us at least what magnitudes of effort are we expecting e.g. is it more like months, weeks or years.</p>
+<p>That said we shouldn’t treat that as the ultimate estimate, as rewriting estimates might change based on:</p>
+<ol>
+<li>Who will do the rewrite - is it a team that knows the product well?</li>
+<li>Does the new technology make things simpler or harder to implement (e.g. are there packages available that might speed up the work)?</li>
+</ol>
+<h3 id="factor-3-was-the-code-written-by-the-same-team-that-will-be-doing-the-rewrite">Factor 3: Was the Code Written by the Same Team That Will be Doing the Rewrite</h3>
+<p>What I often saw in the past is a new team taking over a project requesting time for a ground up rewrite/refactor because how difficult it is to work in the existing codebase.</p>
+<p>The codebase would usually have no documentation, it would be so bad to the point to no one knew what is the list of currently used features!</p>
+<p>A rewrite in this case is very risky because:</p>
+<ol>
+<li>We might alter behavior that already exists (which might be a bug that turns out to be a feature used by someone)</li>
+<li>We might forget about implementing an existing feature</li>
+<li>The team doing the rewrite needs to learn the business domain which can lead to additional costs</li>
+</ol>
+<h3 id="factor-4-is-the-code-currently-used">Factor 4: Is the Code Currently Used</h3>
+<p>Doing a rewrite of the whole codebase can be reckless. Chances are that there are multiple features that are rarely used or not used at all.</p>
+<p>Let’s say we rewrite those features in Rust and that way improve the performance. How does that impact the business? Did it lower costs? Did it increase the usage of the features? And most importantly - was that benefit worth the cost of the rewrite?</p>
+<p>If the code is not used at all, maybe it makes more sense to delete it instead of rewriting it?</p>
+<h3 id="factor-5-how-often-do-we-anticipate-the-codebase-to-change">Factor 5: How Often do We Anticipate the Codebase to Change</h3>
+<p>Another thing to consider is how do we anticipate the codebase to change.</p>
+<p>This might be a stable process that exists in the company for years or is this something that just got created and is more of an experiment/quick prototype.</p>
+<p>Let’s say it’s an established process and we do a refactor. Nobody touches that code after the rewrite for multiple years. Was the rewrite worth it?</p>
+<p>Well, there is some argument that it might increase morale among the engineers working on that codebase (which is important as it might allow you to retain employees and avoid costs of finding new hires).</p>
+<p>But other than that - why touch something that probably won’t change?</p>
+<h2 id="example-cases">Example Cases</h2>
+<p>Given the described factors, let&rsquo;s have a look at a couple of potential cases and see if a rewrite is a good idea.</p>
+<h2 id="case-1-messy-codebase-that-is-used-a-lot">Case 1: Messy Codebase that is Used a Lot</h2>
+<p>If the codebase is currently being used, that means there is still a need to maintain it, e.g. react to incidents, fix bugs, provide support for users.</p>
+<p>By starting a rewrite we would essentially be doing two jobs:</p>
+<ol>
+<li>Reimplementing the new system</li>
+<li>Supporting the old system</li>
+</ol>
+<p>Given that new features might start to be requested from users of the old system, you might end in a situation where you are in a big hurry for feature parity. And as a result you end up with two messy codebases instead of one.</p>
+<h2 id="case-2-messy-codebase-that-is-not-used">Case 2: Messy Codebase that is Not Used</h2>
+<p>We do a rewrite of a codebase that is not used. Probably it will remain unused. Unless we address the core issues of the original codebase, e.g. issues causing the users to not want to use the product.</p>
+<p>Learn if you are even solving someone&rsquo;s problem, if not, just archive the codebase and move on.</p>
+<h2 id="case-3-performance-limitation-used-code">Case 3: Performance Limitation, Used code</h2>
+<p>Let&rsquo;s say our codebase is slow and we already tuned everything there is to tune and we are out of ideas.</p>
+<p>In the <a href="https://discord.com/blog/why-discord-is-switching-from-go-to-rust">Discord example of switching from Go to Rust</a> the rewrite to Rust did improve the performance, but we don&rsquo;t know what the ROI of this investment is. I imagine that the team did take into consideration how crucial that service is and how this investment is going to pay dividends over time. Additionally, it is mentioned in the article that it was also meant to improve the user experience, so there was some idea of a business value behind it.</p>
+<p>You can <a href="https://news.ycombinator.com/item?id=22238335">find comments</a> about Go improving it&rsquo;s garbage collector and people questioning the rewrite. We don&rsquo;t know if the improvements of Go&rsquo;s garbage collector would have been enough.</p>
+<p>Which further shows how difficult those decisions are, e.g. what would you pick: a rewrite or fixing edge cases in a garbage collector?</p>
+<h2 id="alternatives-to-large-rewrites">Alternatives to Large Rewrites</h2>
+<p>Large rewrites are risky bets, they can get really expensive and the benefits can be difficult to quantify.</p>
+<p>That’s why to manage risks of bad time investments it’s better to work in small steps. For example continue developing new features in your legacy codebase, but try to add in some minor improvements (<a href="https://understandlegacycode.com/blog/key-points-of-working-effectively-with-legacy-code/">The key points of Working Effectively with Legacy Code</a> describes useful techniques)</p>
+<p>Over time this will improve the codebase and will do it in places that are changed most often. This works well if we are not changing a fundamental technology in our codebase.</p>
+<p>In case of rewrites into another technology, you could rewrite only some very specific part as a start. For example if you have a bottleneck in the R code, rewrite this part into C++ and call it from R. That way, you make the change smaller and less risky.</p>
+<p>If that’s not a possibility and you can’t link technologies together, do a quick prototype, estimate the potential ROI and make a decision based on that.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>Large software rewrites are risky and difficult.</p>
+<p>Before suggesting or attempting one, think about</p>
+<ol>
+<li>Why do you want to do a rewrite?</li>
+<li>How big the codebase is?</li>
+<li>Is the rewrite done by the original authors?</li>
+<li>Is the code currently used?</li>
+<li>How often do we anticipate the codebase to change?</li>
+</ol>
+<p>Even better, put that all in a doc and quickly estimate a potential ROI. Prepare initial small steps, after each step reassess if it’s worth to continue the rewrite.</p>
+<p>I am not saying to never do rewrites, but before I would do one I would consider all the less risky and costly options.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="/post/2024-04-13-4-ux-inspired-tips-to-improve-your-communication-skills/"><span>4 UX Design Inspired Tips to Improve your Communication Skills</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2024 <a href="/">Ryszard Szymański</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>
