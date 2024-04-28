@@ -1,0 +1,22 @@
+{
+  "R": {
+    "Version": "4.1.2",
+    "Repositories": [
+      {
+        "Name": "CRAN",
+        "URL": "https://packagemanager.posit.co/cran/latest"
+      }
+    ]
+  },
+  "Packages": {
+    "renv": {
+      "Package": "renv",
+      "Version": "1.0.7",
+      "OS_type": NA,
+      "NeedsCompilation": "no",
+      "Repository": "CRAN",
+      "Source": "Repository",
+      "Requirements": []
+    }
+  }
+}
