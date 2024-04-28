@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>2 Unobvious But Effective Problem Solving Techniques - Ryszard Szymański</title>
+
+  
+  
+  <meta name="description" content="As a software engineer, most of my time is spent on solving different kinds of problems. These problems are not necessarily always technical in nature.
+Sometimes instead of solving the problem, you can find a solution that doesn’t necessarily involve resolving the issue directly.
+In this post I’d like to share two techniques that allow you to do that.
+Technique 1: Reframing the Problem Sometimes when we are asked to solve the problem, the problem statement might be incorrect." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="/an-old-hope.min.css" />
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.93.2" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="2 Unobvious But Effective Problem Solving Techniques" />
+<meta property="og:description" content="As a software engineer, most of my time is spent on solving different kinds of problems. These problems are not necessarily always technical in nature.
+Sometimes instead of solving the problem, you can find a solution that doesn’t necessarily involve resolving the issue directly.
+In this post I’d like to share two techniques that allow you to do that.
+Technique 1: Reframing the Problem Sometimes when we are asked to solve the problem, the problem statement might be incorrect." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2024-04-28-2-unobvious-but-effective-problem-solving-techniques/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-04-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-04-28T00:00:00+00:00" />
+
+
+  
+  <meta itemprop="name" content="2 Unobvious But Effective Problem Solving Techniques">
+<meta itemprop="description" content="As a software engineer, most of my time is spent on solving different kinds of problems. These problems are not necessarily always technical in nature.
+Sometimes instead of solving the problem, you can find a solution that doesn’t necessarily involve resolving the issue directly.
+In this post I’d like to share two techniques that allow you to do that.
+Technique 1: Reframing the Problem Sometimes when we are asked to solve the problem, the problem statement might be incorrect."><meta itemprop="datePublished" content="2024-04-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-04-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="681">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="2 Unobvious But Effective Problem Solving Techniques"/>
+<meta name="twitter:description" content="As a software engineer, most of my time is spent on solving different kinds of problems. These problems are not necessarily always technical in nature.
+Sometimes instead of solving the problem, you can find a solution that doesn’t necessarily involve resolving the issue directly.
+In this post I’d like to share two techniques that allow you to do that.
+Technique 1: Reframing the Problem Sometimes when we are asked to solve the problem, the problem statement might be incorrect."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="/">Ryszard Szymański</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/szymanskir"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>Apr 28, 2024</time>
+      
+      
+    </p>
+    <h1>2 Unobvious But Effective Problem Solving Techniques</h1>
+  </header>
+  <section class="post-content"><p>As a software engineer, most of my time is spent on solving different kinds of problems. These problems are not necessarily always technical in nature.</p>
+<p>Sometimes instead of solving the problem, you can find a solution that doesn’t necessarily involve resolving the issue directly.</p>
+<p>In this post I’d like to share two techniques that allow you to do that.</p>
+<h2 id="technique-1-reframing-the-problem">Technique 1: Reframing the Problem</h2>
+<p>Sometimes when we are asked to solve the problem, the problem statement might be incorrect.</p>
+<p>Or the statement is made in such a way that narrows down the possible landscape of solutions.</p>
+<p>A good example of such problem statement is:</p>
+<blockquote>
+<p><em>We have 4 features to implement and a deadline in a month. How many people do we need to add to the project to complete those 4 features in that time?</em></p>
+</blockquote>
+<p>This problem statement forces you to think in terms of solutions of the type: <em>I can add from 0 to 10 developers to the team</em>.</p>
+<p>What if we looked at the problem from other angles. For example:</p>
+<blockquote>
+<p><em>Why do those 4 features need to be implemented until that deadline? Is it a regulatory requirement or is it just a manager who would love to have those features at that time?</em></p>
+</blockquote>
+<p>Let’s assume for the sake of the example that it’s a regulatory requirement and if we don’t address it until that deadline, we will get fined.</p>
+<p>Now we know that that the deadline part of the problem statement can be hard to reframe.</p>
+<p>Let’s have a closer look at the 4 required features. Are all those 4 features required to meet regulatory requirements?</p>
+<p>If not and only 2 are needed we can already reframe the problem to:</p>
+<blockquote>
+<p>Are we able to implement those 2 features until that deadline.</p>
+</blockquote>
+<p>We can also have a closer look at the complexity of those features - can we make them simpler to implement, but meet regulatory requirements at the same time?</p>
+<p>A good example of simplifying a feature is the feature of collaborative editing. The solution can vary in terms of complexity:</p>
+<ol>
+<li>More complex option: be able to write simultaneously in a doc in real time</li>
+<li>Less complex option: only allow a single user to edit a document at the time and other users are able to view the doc in read mode</li>
+</ol>
+<p>While of course option no 2 can be considered worse UX wise, it gives us a simpler solution to a similar problem which might actually be a enough in specific situations.</p>
+<p>Now we can reframe the original problem statement to statements like:</p>
+<blockquote>
+<ol>
+<li>What are the regulatory requirements that we need to meet by this deadline?</li>
+<li>What is the simplest effective approach to meeting the regulatory requirements?</li>
+</ol>
+</blockquote>
+<p>And now we suddenly look at the same situation from different angles. Those different angles encourage us to explore new, potentially better solutions.</p>
+<h2 id="technique-2-make-the-problem-disappear">Technique 2: Make the Problem Disappear</h2>
+<p>Sometimes a problem is caused by an upstream problem. In those cases, solving the upstream problem makes the downstream problem disappear.</p>
+<p>Let’s say you start using a new library that you find very useful. Over time you notice that the library is incompatible with other libraries you would like to use. This sparks problems.</p>
+<p>you could solve the compatibility issues by patching the involved libraries to make them compatible</p>
+<p>or</p>
+<p>you could stop using the library that&rsquo;s the source of most compatibility issues</p>
+<p>It comes down to your perceived ROI of that library - does it provide enough benefits to justify the costs of solving compatibility issues?</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Solving problems is just the tip of the iceberg. Solving the right problem is where we can find more value.</p>
+<p>That’s why using techniques like <em>Reframing the Problem</em> or <em>Making the Problem Disappear</em> can be very powerful.</p>
+<p>They allow us to look at the problem from different perspectives and pick the right problems to solve or come up with more effective solutions.</p>
+<p>These 2 techniques are not mutually exclusive as reframing a problem might lead us to discovering an upstream problem. We can then solve that upstream problem to make the downstream problem disappear.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="/post/2024-04-22-stop-doing-large-rewrites/"><span>Stop Doing Large Rewrites</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2024 <a href="/">Ryszard Szymański</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>

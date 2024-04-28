@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Ryszard Szymański</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 22 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2 Unobvious But Effective Problem Solving Techniques</title>
+      <link>/post/2024-04-28-2-unobvious-but-effective-problem-solving-techniques/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2024-04-28-2-unobvious-but-effective-problem-solving-techniques/</guid>
+      <description>As a software engineer, most of my time is spent on solving different kinds of problems. These problems are not necessarily always technical in nature.
+Sometimes instead of solving the problem, you can find a solution that doesn’t necessarily involve resolving the issue directly.
+In this post I’d like to share two techniques that allow you to do that.
+Technique 1: Reframing the Problem Sometimes when we are asked to solve the problem, the problem statement might be incorrect.</description>
+    </item>
+    
     <item>
       <title>Stop Doing Large Rewrites</title>
       <link>/post/2024-04-22-stop-doing-large-rewrites/</link>
