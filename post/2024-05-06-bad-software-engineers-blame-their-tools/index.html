@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>Bad Software Engineers Blame their Tools - Ryszard Szymański</title>
+
+  
+  
+  <meta name="description" content="Złej baletnicy przeszkadza rąbek u spódnicy is a popular polish idiom that can be considered an equivalent of A bad workman always blames his tools
+This idiom turned out to be one of my first professional guidelines. It all started with my boss talking with one of my colleagues.
+My boss was doing some coding in their office, my colleague walked in because they needed something. They looked at my bosses computer and asked “Are you able to code in a light theme IDE?" />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="/an-old-hope.min.css" />
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.93.2" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Bad Software Engineers Blame their Tools" />
+<meta property="og:description" content="Złej baletnicy przeszkadza rąbek u spódnicy is a popular polish idiom that can be considered an equivalent of A bad workman always blames his tools
+This idiom turned out to be one of my first professional guidelines. It all started with my boss talking with one of my colleagues.
+My boss was doing some coding in their office, my colleague walked in because they needed something. They looked at my bosses computer and asked “Are you able to code in a light theme IDE?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2024-05-06-bad-software-engineers-blame-their-tools/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-05-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-05-06T00:00:00+00:00" />
+
+
+  
+  <meta itemprop="name" content="Bad Software Engineers Blame their Tools">
+<meta itemprop="description" content="Złej baletnicy przeszkadza rąbek u spódnicy is a popular polish idiom that can be considered an equivalent of A bad workman always blames his tools
+This idiom turned out to be one of my first professional guidelines. It all started with my boss talking with one of my colleagues.
+My boss was doing some coding in their office, my colleague walked in because they needed something. They looked at my bosses computer and asked “Are you able to code in a light theme IDE?"><meta itemprop="datePublished" content="2024-05-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-05-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="411">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Bad Software Engineers Blame their Tools"/>
+<meta name="twitter:description" content="Złej baletnicy przeszkadza rąbek u spódnicy is a popular polish idiom that can be considered an equivalent of A bad workman always blames his tools
+This idiom turned out to be one of my first professional guidelines. It all started with my boss talking with one of my colleagues.
+My boss was doing some coding in their office, my colleague walked in because they needed something. They looked at my bosses computer and asked “Are you able to code in a light theme IDE?"/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="/">Ryszard Szymański</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/szymanskir"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>May 6, 2024</time>
+      
+      
+    </p>
+    <h1>Bad Software Engineers Blame their Tools</h1>
+  </header>
+  <section class="post-content"><p><em>Złej baletnicy przeszkadza rąbek u spódnicy</em> is a popular polish idiom that can be considered an equivalent of <em>A bad workman always blames his tools</em></p>
+<p>This idiom turned out to be one of my first professional guidelines. It all started with my boss talking with one of my colleagues.</p>
+<p>My boss was doing some coding in their office, my colleague walked in because they needed something. They looked at my bosses computer and asked “<em>Are you able to code in a light theme IDE</em>?”</p>
+<p>My boss turned around, smiled and said <em>Złej baletnicy przeszkadza rąbek u spodnicy</em>. At that moment I thought how cool my boss is, they don’t care about such irrelevant things like IDE themes, they just get work done.</p>
+<p>My boss would show this attitude in other situations. Even in those with pretty significant and annoying limitations. They would always try to look for solutions instead of complaining about the situation.</p>
+<p>This proactive behavior was something I wanted to do too! I wanted to be this cool developer that is able to deliver value despite the circumstances, not the one that fails to do it because of them.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Don’t allow minor setbacks to prevent you from delivering value.</p>
+<p>Even if you take a large productivity hit, delivering something is better than delivering nothing. And delivering something is certainly better than just complaining. And if you do complain, do it in a way that releases tension (e.g. jokes) or leads to constructive feedback that might improve the situation.</p>
+<p>Let&rsquo;s say your favorite IDE is not available at the company you are working in.</p>
+<p>Estimate how much of a productivity hit you take and see if the effort of getting that IDE configured is worth the gains in productivity.</p>
+<p>I personally went through an Emacs configuring phase when writing my bachelor thesis. Ultimately it turned out that maintaining the configuration and replicating it on work laptops is too much of a hassle.</p>
+<p>The time I was spending on configuring Emacs could be spent on learning more reusable skills that will transfer well between different projects like problem solving or learning how to learn quickly.</p>
+<p>Focusing on general and reusable skills allows me to remain effective in projects no matter the circumstances.</p>
+<p>If 80% of my productivity was dependent on my Emacs setup, I wouldn’t be very useful in projects that don’t allow me to have that, so don&rsquo;t let your productivity depend on things that might often be unavailable.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="/post/2024-04-28-2-unobvious-but-effective-problem-solving-techniques/"><span>2 Unobvious But Effective Problem Solving Techniques</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2024 <a href="/">Ryszard Szymański</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>

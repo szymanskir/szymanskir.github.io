@@ -6,7 +6,18 @@
     <description>Recent content on Ryszard Szymański</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bad Software Engineers Blame their Tools</title>
+      <link>/post/2024-05-06-bad-software-engineers-blame-their-tools/</link>
+      <pubDate>Mon, 06 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2024-05-06-bad-software-engineers-blame-their-tools/</guid>
+      <description>Złej baletnicy przeszkadza rąbek u spódnicy is a popular polish idiom that can be considered an equivalent of A bad workman always blames his tools
+This idiom turned out to be one of my first professional guidelines. It all started with my boss talking with one of my colleagues.
+My boss was doing some coding in their office, my colleague walked in because they needed something. They looked at my bosses computer and asked “Are you able to code in a light theme IDE?</description>
+    </item>
+    
     <item>
       <title>2 Unobvious But Effective Problem Solving Techniques</title>
       <link>/post/2024-04-28-2-unobvious-but-effective-problem-solving-techniques/</link>
