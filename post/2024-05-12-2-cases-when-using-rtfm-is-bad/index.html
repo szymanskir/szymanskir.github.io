@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>2 cases when using RTFM is bad - Ryszard Szymański</title>
+
+  
+  
+  <meta name="description" content="RTFM stands for read the friendly manual. While it is good advice, I don’t think giving it as feedback to someone is very productive. It might also be the wrong advice in certain cases.
+In this post I’d like to go through two situations where saying RTFM is just not a good thing to do.
+Case 1: Your Manual is Bad You wrote a manual or some documentation and you receive the same questions from different people." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="/an-old-hope.min.css" />
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.93.2" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="2 cases when using RTFM is bad" />
+<meta property="og:description" content="RTFM stands for read the friendly manual. While it is good advice, I don’t think giving it as feedback to someone is very productive. It might also be the wrong advice in certain cases.
+In this post I’d like to go through two situations where saying RTFM is just not a good thing to do.
+Case 1: Your Manual is Bad You wrote a manual or some documentation and you receive the same questions from different people." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2024-05-12-2-cases-when-using-rtfm-is-bad/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-05-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-05-12T00:00:00+00:00" />
+
+
+  
+  <meta itemprop="name" content="2 cases when using RTFM is bad">
+<meta itemprop="description" content="RTFM stands for read the friendly manual. While it is good advice, I don’t think giving it as feedback to someone is very productive. It might also be the wrong advice in certain cases.
+In this post I’d like to go through two situations where saying RTFM is just not a good thing to do.
+Case 1: Your Manual is Bad You wrote a manual or some documentation and you receive the same questions from different people."><meta itemprop="datePublished" content="2024-05-12T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-05-12T00:00:00+00:00" />
+<meta itemprop="wordCount" content="288">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="2 cases when using RTFM is bad"/>
+<meta name="twitter:description" content="RTFM stands for read the friendly manual. While it is good advice, I don’t think giving it as feedback to someone is very productive. It might also be the wrong advice in certain cases.
+In this post I’d like to go through two situations where saying RTFM is just not a good thing to do.
+Case 1: Your Manual is Bad You wrote a manual or some documentation and you receive the same questions from different people."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="/">Ryszard Szymański</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/szymanskir"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>May 12, 2024</time>
+      
+      
+    </p>
+    <h1>2 cases when using RTFM is bad</h1>
+  </header>
+  <section class="post-content"><p>RTFM stands for <em>read the friendly manual</em>. While it is good advice, I don’t think giving it as feedback to someone is very productive. It might also be the wrong advice in certain cases.</p>
+<p>In this post I’d like to go through two situations where saying RTFM is just not a good thing to do.</p>
+<h2 id="case-1-your-manual-is-bad">Case 1: Your Manual is Bad</h2>
+<p>You wrote a manual or some documentation and you receive the same questions from different people.</p>
+<p>I am sorry but even if the question is answered in the manual, your manual might need some improvement because users are not able to find the information they need.</p>
+<p>For example: you keep your docs in markdown files in a GitHub repository. For non coders searching through a GitHub repository might be difficult.</p>
+<p>In that case hosting on GitHub pages and adding a search option might make your manual friendlier for end users.</p>
+<h2 id="case-2-there-is-a-learning-opportunity">Case 2: There is a Learning opportunity</h2>
+<p>Let’s say your manual is perfect and it is indeed a situation where your colleague has some gaps in searching skills.</p>
+<p>All of us had to learn how to search information at some point. For example how to tune a search phrase in google.</p>
+<p>Use it as a learning opportunity to show that person how to look for information effectively in your company.</p>
+<p>Ask them if they would like some tips about how to search for information internally. If they say yes, ask them to show you how they currently look for information and give them tips based on that!</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Saying RTFM is not productive and can even be considered rude.</p>
+<p>Next time, before saying RTFM:</p>
+<ol>
+<li>Check if your manual is good enough</li>
+<li>Use it as a mentoring opportunity</li>
+</ol>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="/post/2024-05-06-bad-software-engineers-blame-their-tools/"><span>Bad Software Engineers Blame their Tools</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2024 <a href="/">Ryszard Szymański</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>
