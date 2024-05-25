@@ -6,7 +6,20 @@
     <description>Recent content on Ryszard Szymański</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 18 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Don&#39;t Stop At Giving Feedback. Show How It&#39;s Done</title>
+      <link>/post/2024-05-25-don-t-stop-at-giving-feedback-show-how-it-s-done/</link>
+      <pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2024-05-25-don-t-stop-at-giving-feedback-show-how-it-s-done/</guid>
+      <description>When giving feedback it’s very easy just give out requests. For example during code reviews you might say:
+ This variable name is difficult to read. Please change it to something more readable.
+ Or to refer to known heuristics:
+ This code does not follow the Don&amp;rsquo;t Repeat Yourself (DRY) principle. Please remove duplicate code.
+ While it may sound simple, I think this sort of feedback is just a way of giving others more work.</description>
+    </item>
+    
     <item>
       <title>2 Examples of Why You Should Not Use Self-righteous Statements</title>
       <link>/post/2024-05-18-2-examples-of-why-you-should-not-use-self-righteous-assertions/</link>
