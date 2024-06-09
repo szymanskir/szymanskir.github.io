@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Ryszard Szymański</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 02 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>&#39;Scalability&#39; - What Do We Mean By That</title>
+      <link>/post/2024-06-09-scalability-what-do-we-mean-by-that/</link>
+      <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2024-06-09-scalability-what-do-we-mean-by-that/</guid>
+      <description>I remember this job interview, me and the interviewer were talking about my experience in different programming languages.
+At one point we started talking about languages like R and Python and to my surprise the interviewer interrupted me and said those languages do not scale.
+I was still relatively early in my career and it was not clear to me what they mean by that.
+This term was very confusing for me.</description>
+    </item>
+    
     <item>
       <title>4 Stages of Fighting My Phone to Get my Attention Back</title>
       <link>/post/2024-06-02-4-stages-of-fighting-my-phone-to-get-my-attention-back/</link>

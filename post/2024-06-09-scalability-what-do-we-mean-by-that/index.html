@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>&#39;Scalability&#39; - What Do We Mean By That - Ryszard Szymański</title>
+
+  
+  
+  <meta name="description" content="I remember this job interview, me and the interviewer were talking about my experience in different programming languages.
+At one point we started talking about languages like R and Python and to my surprise the interviewer interrupted me and said those languages do not scale.
+I was still relatively early in my career and it was not clear to me what they mean by that.
+This term was very confusing for me." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="/an-old-hope.min.css" />
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.93.2" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="&#39;Scalability&#39; - What Do We Mean By That" />
+<meta property="og:description" content="I remember this job interview, me and the interviewer were talking about my experience in different programming languages.
+At one point we started talking about languages like R and Python and to my surprise the interviewer interrupted me and said those languages do not scale.
+I was still relatively early in my career and it was not clear to me what they mean by that.
+This term was very confusing for me." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2024-06-09-scalability-what-do-we-mean-by-that/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-06-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-06-09T00:00:00+00:00" />
+
+
+  
+  <meta itemprop="name" content="&#39;Scalability&#39; - What Do We Mean By That">
+<meta itemprop="description" content="I remember this job interview, me and the interviewer were talking about my experience in different programming languages.
+At one point we started talking about languages like R and Python and to my surprise the interviewer interrupted me and said those languages do not scale.
+I was still relatively early in my career and it was not clear to me what they mean by that.
+This term was very confusing for me."><meta itemprop="datePublished" content="2024-06-09T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-06-09T00:00:00+00:00" />
+<meta itemprop="wordCount" content="974">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="&#39;Scalability&#39; - What Do We Mean By That"/>
+<meta name="twitter:description" content="I remember this job interview, me and the interviewer were talking about my experience in different programming languages.
+At one point we started talking about languages like R and Python and to my surprise the interviewer interrupted me and said those languages do not scale.
+I was still relatively early in my career and it was not clear to me what they mean by that.
+This term was very confusing for me."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="/">Ryszard Szymański</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/szymanskir"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>Jun 9, 2024</time>
+      
+      
+    </p>
+    <h1>&#39;Scalability&#39; - What Do We Mean By That</h1>
+  </header>
+  <section class="post-content"><p>I remember this job interview, me and the interviewer were talking about my experience in different programming languages.</p>
+<p>At one point we started talking about languages like R and Python and to my surprise the interviewer interrupted me and said <em>those languages do not scale</em>.</p>
+<p>I was still relatively early in my career and it was not clear to me what they mean by that.</p>
+<p>This term was very confusing for me. For example: one person says to just create static websites because they scale better, a different person says that you have to use Rust on the server side to get scalability.</p>
+<p>This can leave others confused as those seem to be two drastically different recommendations for the same <em>scalability issue</em>.</p>
+<p>Each situation can be different and have their own scalability challenges. In this blog post I&rsquo;d like to go through different examples to show multiple dimensions of <em>scalability</em>.</p>
+<h2 id="case-1-handling-millions-of-users">Case 1: Handling Millions of Users</h2>
+<p>With scaling we often think about the amount of users our product is going to have.</p>
+<p>To be honest, you can probably take most technologies and if you throw enough money into infrastructure resources, you should be good to go (assuming you have infinite money).</p>
+<p>Conversely, you can take the fastest programming language, but if you don’t have enough infrastructure resources and you keep on adding users you will at some point reach a limit.</p>
+<p>So I think handing millions of users is not the right problem statement. To be more specific I believe we should reframe the problem to:</p>
+<p><em>Handling millions of users at a cost that allows us to have a positive and meaningful Return On Investment</em></p>
+<p>And this brings us to case 2</p>
+<h2 id="case-2-handling-the-costs-of-millions-of-users">Case 2: Handling the Costs of Millions of Users</h2>
+<p>Now we get more specific, which allows us to make more objective judgements.</p>
+<p>Let’s assume that we are considering two technologies A and B.</p>
+<p>To simplify the example let’s assume that 1 process running language A and 1 running language B consume the same amount of resources (CPU, RAM, etc.).</p>
+<p>But let’s say that 1 process of language A is able to handle 10 users while 1 process of language B is able to handle a 100 users. By <em>handling</em> I mean they are able to provide our expected User Experience (e.g. response times of a given magnitude).</p>
+<p>Let’s assume our traffic is 1000 of users, we can handle that with 10 processes of language B and 100 processes of language A.</p>
+<p>As each process consumes the same amount of resources we need 10x more resources for language A to handle the same traffic.</p>
+<p>Because of that it will probably mean that the cost of running language A will be higher than language B (not necessarily 10x as the cost of resources may not be linear).</p>
+<blockquote>
+<p>One thing we did not take into account is the cost of development time.</p>
+<p>What if programmers of language B earn 10x more than programmers of language A and are harder to find?</p>
+<p>This means additional costs of employment and recruitment! Do they outweigh the savings on infrastructure costs?
+We won&rsquo;t be diving deeper into that in this blog post, but it is another dimension to keep in mind.</p>
+</blockquote>
+<h2 id="case-3-handling-a-lot-of-data">Case 3: Handling A LOT of Data</h2>
+<p>Static sites are a nice idea as the only thing our server needs to do is serve the static content and from that point everything else happens in the users browsers and consumes the resources of their devices.</p>
+<p>It might work well if the data we use there is small and doesn’t change often. Let’s say a couple of MBs of data with which the user can interact with.</p>
+<p>What if data gets bigger? Let’s say GB, Tb and Pb of data? Things probably won’t work, as the resources on the client device won’t be enough and you will be pushing large amounts of data through the network which can be slow and costly.</p>
+<p>This means that suddenly our scalable static option is not that scalable anymore.</p>
+<p>Now we need a different solution, servers or multiple servers that will allow us to handle the required amounts of data. This shifts our perspective on what we mean by scalability.</p>
+<blockquote>
+<p>We can go here into a bigger rabbit hole, we have a lot of data but what are our needs in terms of throughput and latency, which again is another dimension to consider.</p>
+</blockquote>
+<h2 id="case-4-does-the-tech-scale-to-hundreds-of-developers">Case 4: Does the Tech Scale to Hundreds of Developers</h2>
+<p>As your codebase grows along with the amount of involved developers some issues might star to appear, e.g. slow compiling times or build times.</p>
+<p>Another dimension of scalability is whether many developers are able to collaborate in the source code?</p>
+<p>Let’s say your project has a test suite that is growing over time. At some point your test suite is going to get large enough that it won’t be sustainable to run it for each code change.</p>
+<p>There are different tools that can help with this issue like <a href="https://turbo.build/">Turborepo</a> which will cache results of tasks allowing you to only run the tasks that need to be run.</p>
+<p>If such tooling is not available in your language you might notice a slow down at some point when your codebase grows.</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>Scalability is too general of a term to lead to meaningful discussions.</p>
+<p>To improve your scalability related discussions identify what dimensions are important in your context:</p>
+<ol>
+<li>Are you worried about large infrastructure costs? When is it too expensive?</li>
+<li>Are you worried about handling large amounts of data? How much data?</li>
+<li>Are you worried about a large number of users? How many users do you expect?</li>
+<li>Is it a combination of all the 3 above?</li>
+</ol>
+<p>Not talking about those dimensions might lead to just picking <em>the supposedly more scalable solution</em> but not scalable in the sense that you are hoping for.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="/post/2024-06-02-4-stages-of-fighting-my-phone-to-get-my-attention-back/"><span>4 Stages of Fighting My Phone to Get my Attention Back</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2024 <a href="/">Ryszard Szymański</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>
