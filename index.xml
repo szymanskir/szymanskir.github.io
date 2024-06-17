@@ -6,7 +6,17 @@
     <description>Recent content on Ryszard Szymański</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 09 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>3 Heuristics I Use To Avoid Over-engineering</title>
+      <link>/post/2024-06-17-3-heuristics-i-use-to-avoid-over-engineering/</link>
+      <pubDate>Mon, 17 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2024-06-17-3-heuristics-i-use-to-avoid-over-engineering/</guid>
+      <description>I remember early in my career when I would get finished with a feature I would seek out feedback from more senior colleagues.
+I would usually ask - what they think about it and looks good usually was not enough for me. I would follow up with could this be done better. Interestingly, they often didn’t really have much additional feedback, which was frustrating as I wanted to get better.</description>
+    </item>
+    
     <item>
       <title>&#39;Scalability&#39; - What Do We Mean By That</title>
       <link>/post/2024-06-09-scalability-what-do-we-mean-by-that/</link>

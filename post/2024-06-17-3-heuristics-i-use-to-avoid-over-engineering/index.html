@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>3 Heuristics I Use To Avoid Over-engineering - Ryszard Szymański</title>
+
+  
+  
+  <meta name="description" content="I remember early in my career when I would get finished with a feature I would seek out feedback from more senior colleagues.
+I would usually ask - what they think about it and looks good usually was not enough for me. I would follow up with could this be done better. Interestingly, they often didn’t really have much additional feedback, which was frustrating as I wanted to get better." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="/an-old-hope.min.css" />
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.93.2" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="3 Heuristics I Use To Avoid Over-engineering" />
+<meta property="og:description" content="I remember early in my career when I would get finished with a feature I would seek out feedback from more senior colleagues.
+I would usually ask - what they think about it and looks good usually was not enough for me. I would follow up with could this be done better. Interestingly, they often didn’t really have much additional feedback, which was frustrating as I wanted to get better." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2024-06-17-3-heuristics-i-use-to-avoid-over-engineering/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-06-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-06-17T00:00:00+00:00" />
+
+
+  
+  <meta itemprop="name" content="3 Heuristics I Use To Avoid Over-engineering">
+<meta itemprop="description" content="I remember early in my career when I would get finished with a feature I would seek out feedback from more senior colleagues.
+I would usually ask - what they think about it and looks good usually was not enough for me. I would follow up with could this be done better. Interestingly, they often didn’t really have much additional feedback, which was frustrating as I wanted to get better."><meta itemprop="datePublished" content="2024-06-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-06-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="881">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="3 Heuristics I Use To Avoid Over-engineering"/>
+<meta name="twitter:description" content="I remember early in my career when I would get finished with a feature I would seek out feedback from more senior colleagues.
+I would usually ask - what they think about it and looks good usually was not enough for me. I would follow up with could this be done better. Interestingly, they often didn’t really have much additional feedback, which was frustrating as I wanted to get better."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="/">Ryszard Szymański</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/szymanskir"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>Jun 17, 2024</time>
+      
+      
+    </p>
+    <h1>3 Heuristics I Use To Avoid Over-engineering</h1>
+  </header>
+  <section class="post-content"><p>I remember early in my career when I would get finished with a feature I would seek out feedback from more senior colleagues.</p>
+<p>I would usually ask - what they think about it and <em>looks good</em> usually was not enough for me. I would follow up with <em>could this be done better</em>. Interestingly, they often didn’t really have much additional feedback, which was frustrating as I wanted to get better.</p>
+<p>However, this mindset <em>constantly trying to improve things</em> would lead me to the following situation:</p>
+<ol>
+<li>I would work on a feature</li>
+<li>I would learn about a new concept (for example design patterns)</li>
+<li>I would look for ways to apply the new concepts to my current work</li>
+</ol>
+<p>This loop of learning about new things and trying to apply them to ongoing work would repeat itself multiple times leading to …</p>
+<p>&hellip;you guessed it - over-engineering. I would blindly apply patterns without necessarily thinking if they are adding any value to the solution or taking into account  that they are adding complexity (as other developers would need to get acquainted with those patterns to understand my solution).</p>
+<p>Over the years I managed to learn a couple of heuristics that prevent me going down the over-engineering rabbit hole.</p>
+<h2 id="heuristic-1-make-sure-that-the-problem-you-see-is-an-actual-problem">Heuristic 1: Make Sure That The Problem You See Is An Actual Problem</h2>
+<p>When implementing your code, you are probably thinking about edge cases that you need cover.</p>
+<p>Sometimes you might notice additional business cases or you might try to anticipate future feature requests. While this is a good thing that you notice those, it’s not necessarily a good idea to try to handle them.</p>
+<p>That’s why I always confirm if a business case I discovered is actually something I need to worry about. That way you avoid implementing additional code (thus adding complexity) for irrelevant cases.</p>
+<h2 id="heuristic-2-start-with-the-simplest-solution-and-build-from-it">Heuristic 2: Start With The Simplest Solution And Build From It</h2>
+<p>My over-engineering mistake was trying to use new concepts I learned immediately.</p>
+<p>Now, I try to make my solutions driven by the problem. For example, let’s say users of the app need to save things.</p>
+<p>I start with the simplest case: I only have 1 user, so maybe I can just save their work in a file.</p>
+<p>But what if I can have multiple users? I confirm that this is indeed a problem, if yes than my solution with just dumping things to a file doesn’t work anymore.</p>
+<p>So in this case, the simplest solution I can think of is using a database. The simplest option for me is using SQLite.</p>
+<blockquote>
+<p>Note: <em>by simplest for me</em> I want underline that this is subjective. Your skills and experience are a decisive factor e.g. if you know Java than it will probably be easier and faster for you to setup an API with Spring compared to using Django.</p>
+</blockquote>
+<p>But is SQLite enough? We were talking about multiple users: does that mean multiple writers? If yes, then <a href="https://www.sqlite.org/cgi/src/doc/begin-concurrent/doc/begin_concurrent.md">SQLite might not be a good fit</a>.</p>
+<p>What’s the next simplest option? Well in my case it’s using PostgreSQL. Would it be enough?</p>
+<p>What if I get millions of users and the write volume starts to be too high? Let’s assume in this example that we are working on an internal application and that the company has 50 employees. 50 is less than millions so it’s a case we probably don’t need to worry about.</p>
+<p>With this iterative approach we came up with the simplest solution that solves our current problems and we avoid picking a solution that involves unnecessary complexity.</p>
+<p>Some of you might wonder - but what if the company decides to make the app public, wouldn’t it be a disaster?</p>
+<p>Well if this happens we still need to get to millions of users. And in that case I’d say - let’s get to that problem first and only if we start seeing higher risk of this happening, let&rsquo;s take care of it.</p>
+<p>There are other ways to manage this risk, e.g. you could ask for a sign up list if you are worried about your product going viral, failing to scale and making a bad impression. That way you can estimate the initial interest and see how high the risk is.</p>
+<h2 id="heuristic-3-a-working-solution-is-better-than-an-uncertain-better-solution">Heuristic 3: A Working Solution Is Better Than An Uncertain Better Solution</h2>
+<p>Sometimes when finishing a feature you might see ways of improving it.</p>
+<p>But that feeling shouldn’t prevent you from shipping a working solution. Especially as implementing the improvements is an unknown (as long as it’s not ready we don’t know how long it will take to implement them).</p>
+<p>In those cases I would usually opt-in to ship something earlier and chances are it will be good enough and further improvements (and the complexities that may come with it) won’t be worth the investment.</p>
+<blockquote>
+<p><strong>Note:</strong> Of course at the same time, this does not mean we shouldn’t  pursue improvements. What I mean here is that the pursuit of improvements shouldn’t prevent shipping existing, working solutions.</p>
+</blockquote>
+<h2 id="summary">Summary</h2>
+<p>I used to over-engineer my solutions thinking that I was making them better.</p>
+<p>Now to avoid doing that:</p>
+<ol>
+<li>I make sure that the problem I see is a problem that needs to be solved</li>
+<li>I start from the simplest solution and build from it</li>
+<li>I prefer existing working solutions from uncertain better solutions</li>
+</ol>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="/post/2024-06-09-scalability-what-do-we-mean-by-that/"><span>&#39;Scalability&#39; - What Do We Mean By That</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2024 <a href="/">Ryszard Szymański</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>
