@@ -3,12 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2024-06-17T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/2024-06-17-3-heuristics-i-use-to-avoid-over-engineering/</loc>
-    <lastmod>2024-06-17T00:00:00+00:00</lastmod>
+    <loc>/post/2024-06-22-2-examples-of-my-personal-feel-bad-metrics/</loc>
+    <lastmod>2024-06-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/</loc>
+    <lastmod>2024-06-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/2024-06-17-3-heuristics-i-use-to-avoid-over-engineering/</loc>
     <lastmod>2024-06-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/2024-06-09-scalability-what-do-we-mean-by-that/</loc>
