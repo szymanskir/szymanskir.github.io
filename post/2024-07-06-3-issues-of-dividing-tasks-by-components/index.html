@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>3 Issues Of Dividing Tasks By Components - Ryszard Szymański</title>
+
+  
+  
+  <meta name="description" content="Imagine you are working on a new feature of your app. It involves changes in the data model, the backend service and the UI.
+You might be tempted to divide this work into tasks based on the components of the system:
+ Task for implementing the UI Task for implementing the backend endpoint Task for adjusting the data model  While this seems reasonable at first, there are problems with this approach." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="/an-old-hope.min.css" />
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.93.2" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="3 Issues Of Dividing Tasks By Components" />
+<meta property="og:description" content="Imagine you are working on a new feature of your app. It involves changes in the data model, the backend service and the UI.
+You might be tempted to divide this work into tasks based on the components of the system:
+ Task for implementing the UI Task for implementing the backend endpoint Task for adjusting the data model  While this seems reasonable at first, there are problems with this approach." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2024-07-06-3-issues-of-dividing-tasks-by-components/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-07-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-07-06T00:00:00+00:00" />
+
+
+  
+  <meta itemprop="name" content="3 Issues Of Dividing Tasks By Components">
+<meta itemprop="description" content="Imagine you are working on a new feature of your app. It involves changes in the data model, the backend service and the UI.
+You might be tempted to divide this work into tasks based on the components of the system:
+ Task for implementing the UI Task for implementing the backend endpoint Task for adjusting the data model  While this seems reasonable at first, there are problems with this approach."><meta itemprop="datePublished" content="2024-07-06T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-07-06T00:00:00+00:00" />
+<meta itemprop="wordCount" content="661">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="3 Issues Of Dividing Tasks By Components"/>
+<meta name="twitter:description" content="Imagine you are working on a new feature of your app. It involves changes in the data model, the backend service and the UI.
+You might be tempted to divide this work into tasks based on the components of the system:
+ Task for implementing the UI Task for implementing the backend endpoint Task for adjusting the data model  While this seems reasonable at first, there are problems with this approach."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="/">Ryszard Szymański</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/szymanskir"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>Jul 6, 2024</time>
+      
+      
+    </p>
+    <h1>3 Issues Of Dividing Tasks By Components</h1>
+  </header>
+  <section class="post-content"><p>Imagine you are working on a new feature of your app. It involves changes in the data model, the backend service and the UI.</p>
+<p>You might be tempted to divide this work into tasks based on the components of the system:</p>
+<ol>
+<li>Task for implementing the UI</li>
+<li>Task for implementing the backend endpoint</li>
+<li>Task for adjusting the data model</li>
+</ol>
+<p>While this seems reasonable at first, there are problems with this approach.</p>
+<p>In this blog post I’ll describe those issues along with an alternative way to break down work.</p>
+<h2 id="issue-1-not-building-with-the-end-in-mind">Issue 1: Not Building With The End In Mind</h2>
+<p>Let’s go back to our example. You begin your work on the backend endpoint. All of your thinking is now enclosed by the boundaries of your backend service.</p>
+<p>You spend a week on handling all potential edge cases and discussing them with the business team.</p>
+<p>After a week someone picks up the UI related task. They look at the responses from the backend service and they notice that they don’t have everything they need to display the required UI.</p>
+<p>In addition, the response is returned in such a form that is not convenient to use on the frontend side.</p>
+<p>It’s even worse as the required information never made it to the original data model or endpoint. Those tasks were so focused on the backend/database side that no one noticed this important control in the UI.</p>
+<p>This is a classic case of unknown unknowns appearing (which appear only at the point when you actually try to implement the solution).</p>
+<h2 id="issue-2-building-towards-the-middle">Issue 2: Building Towards The Middle</h2>
+<p>The way we break down tasks might encourage the team to start building from opposing ends to meet in the middle. For example:</p>
+<ul>
+<li>1 Developer works on the backend and the data model</li>
+<li>1 Developer works on the UI</li>
+</ul>
+<p>They think that they are speeding things up by parallelizing work. Or they are forced to do it by the business to show that they are doing everything they can to meet a deadline.</p>
+<p>Let’s assume that both of the developers are finished with their work and it’s time for the grand finale to connect the frontend to the backend. You are ready to make that API call from the frontend to the backend and it turns out that they don&rsquo;t work together and major adjustments are needed to make them compatible.</p>
+<p>Now, you need to tell your stakeholders that the work that was almost done requires a major refactor of the existing solutions to make them work together (or you need to apply a hacky workaround).</p>
+<p><img src="/misaligned_bridge.jpg" alt="Misaligned Brigde Meme"></p>
+<h2 id="issue-3-delayed-shipping-of-value">Issue 3: Delayed Shipping of Value</h2>
+<p>Dividing tasks in the mentioned way leads to tasks that don’t provide business value when finished.</p>
+<p>After all, if you have the database and API endpoints ready, but all users need a UI to interact with them - you are not delivering value as no one is using what you created (yet!)</p>
+<p>Worst part? If you work that way it might take weeks/months of work before you get to the UI and have something shippable.</p>
+<h2 id="alternative-approach">Alternative Approach</h2>
+<p>Instead of dividing work by component, divide it into independent business cases.</p>
+<p>Let’s use a calculator app as an example. You can start off with supporting addition, then move on to multiplication and later on worry about things like square roots or cosines.</p>
+<p>Each task to be completed requires the functionality to be ready to use by end users. The fact that you need to make backend and database changes are implementation details.</p>
+<p>Thanks to this approach:</p>
+<ol>
+<li>You are enclosed within the business need</li>
+<li>Your goal is to have a shippable feature</li>
+<li>You reduced the number of dependencies within tasks as the business need is independent of others</li>
+</ol>
+<h2 id="conclusions">Conclusions</h2>
+<p>Dividing tasks by software components leads to:</p>
+<ol>
+<li>Building without having the end in mind</li>
+<li>Building towards the middle leading to misalignment</li>
+<li>Delayed value shipping</li>
+</ol>
+<p>Instead, divide the work into business cases and make it your goal for each task to deliver business value.</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="/post/2024-06-30-2-reasons-why-i-can-just-look-it-up-doesn-t-work/"><span>2 Reasons Why &#39;I Can Just Look It Up&#39; Doesn&#39;t Work</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2024 <a href="/">Ryszard Szymański</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>
