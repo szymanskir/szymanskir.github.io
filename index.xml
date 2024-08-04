@@ -6,7 +6,19 @@
     <description>Recent content on Ryszard Szymański</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 28 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Know Your Shiny Reactive Graph: 3 Examples How It May Impact Your Spinners</title>
+      <link>/post/2024-08-04-know-your-shiny-reactive-graph-3-examples-how-it-may-impact-your-spinners/</link>
+      <pubDate>Sun, 04 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2024-08-04-know-your-shiny-reactive-graph-3-examples-how-it-may-impact-your-spinners/</guid>
+      <description>Introduction We use spinners to inform users about a computation happening in the application. In Shiny you can use libraries like shinycssloaders or waiter to show such a loading indicator.
+Both of those libraries use JavaScript events emitted by Shiny like shiny:outputinvalidated (shinycssloaders, waiter) or shiny:recalculating (waiter).
+Those events are emitted based on what is happening in the reactive graph in our Shiny application.
+Depending on how we structure our reactive graph, we might end up in a situation where our spinners don&amp;rsquo;t work smoothly.</description>
+    </item>
+    
     <item>
       <title>2 Prerequisites For Synchronous Meetings To Be Faster Than Async</title>
       <link>/post/2024-07-28-2-prerequisites-for-synchronous-meetings-to-be-faster-than-async/</link>

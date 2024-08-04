@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>Know Your Shiny Reactive Graph: 3 Examples How It May Impact Your Spinners - Ryszard Szymański</title>
+
+  
+  
+  <meta name="description" content="Introduction We use spinners to inform users about a computation happening in the application. In Shiny you can use libraries like shinycssloaders or waiter to show such a loading indicator.
+Both of those libraries use JavaScript events emitted by Shiny like shiny:outputinvalidated (shinycssloaders, waiter) or shiny:recalculating (waiter).
+Those events are emitted based on what is happening in the reactive graph in our Shiny application.
+Depending on how we structure our reactive graph, we might end up in a situation where our spinners don&rsquo;t work smoothly." />
+  <meta name="author" content="" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="/an-old-hope.min.css" />
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.93.2" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Know Your Shiny Reactive Graph: 3 Examples How It May Impact Your Spinners" />
+<meta property="og:description" content="Introduction We use spinners to inform users about a computation happening in the application. In Shiny you can use libraries like shinycssloaders or waiter to show such a loading indicator.
+Both of those libraries use JavaScript events emitted by Shiny like shiny:outputinvalidated (shinycssloaders, waiter) or shiny:recalculating (waiter).
+Those events are emitted based on what is happening in the reactive graph in our Shiny application.
+Depending on how we structure our reactive graph, we might end up in a situation where our spinners don&rsquo;t work smoothly." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2024-08-04-know-your-shiny-reactive-graph-3-examples-how-it-may-impact-your-spinners/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2024-08-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-08-04T00:00:00+00:00" />
+
+
+  
+  <meta itemprop="name" content="Know Your Shiny Reactive Graph: 3 Examples How It May Impact Your Spinners">
+<meta itemprop="description" content="Introduction We use spinners to inform users about a computation happening in the application. In Shiny you can use libraries like shinycssloaders or waiter to show such a loading indicator.
+Both of those libraries use JavaScript events emitted by Shiny like shiny:outputinvalidated (shinycssloaders, waiter) or shiny:recalculating (waiter).
+Those events are emitted based on what is happening in the reactive graph in our Shiny application.
+Depending on how we structure our reactive graph, we might end up in a situation where our spinners don&rsquo;t work smoothly."><meta itemprop="datePublished" content="2024-08-04T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-08-04T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1144">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Know Your Shiny Reactive Graph: 3 Examples How It May Impact Your Spinners"/>
+<meta name="twitter:description" content="Introduction We use spinners to inform users about a computation happening in the application. In Shiny you can use libraries like shinycssloaders or waiter to show such a loading indicator.
+Both of those libraries use JavaScript events emitted by Shiny like shiny:outputinvalidated (shinycssloaders, waiter) or shiny:recalculating (waiter).
+Those events are emitted based on what is happening in the reactive graph in our Shiny application.
+Depending on how we structure our reactive graph, we might end up in a situation where our spinners don&rsquo;t work smoothly."/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="false">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="/">Ryszard Szymański</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/szymanskir"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>Aug 4, 2024</time>
+      
+      
+    </p>
+    <h1>Know Your Shiny Reactive Graph: 3 Examples How It May Impact Your Spinners</h1>
+  </header>
+  <section class="post-content"><h1 id="introduction">Introduction</h1>
+<p>We use spinners to inform users about a computation happening in the application. In Shiny you can use libraries like <a href="https://github.com/daattali/shinycssloaders">shinycssloaders</a> or <a href="https://github.com/JohnCoene/waiter">waiter</a> to show such a loading indicator.</p>
+<p>Both of those libraries use <a href="https://shiny.posit.co/r/articles/build/js-events/">JavaScript events emitted by Shiny</a> like <code>shiny:outputinvalidated</code> (<a href="https://github.com/daattali/shinycssloaders/blob/2f2623fa8762c7351e5e6d044d3dae08a677b06f/inst/assets/spinner.js#L56">shinycssloaders</a>, <a href="https://github.com/JohnCoene/waiter/blob/776f9f3ccd27aa3322d6c6d37c47b3d7b1f393e6/R/waiter.R#L831">waiter</a>) or <code>shiny:recalculating</code> (<a href="https://github.com/JohnCoene/waiter/blob/776f9f3ccd27aa3322d6c6d37c47b3d7b1f393e6/R/waiter.R#L774">waiter</a>).</p>
+<p>Those events are emitted based on what is happening in the reactive graph in our Shiny application.</p>
+<p>Depending on how we structure our reactive graph, we might end up in a situation where our spinners don&rsquo;t work smoothly.</p>
+<p>In this blog post I&rsquo;d like to show 3 examples of how the structure of the reactive graph might impact how our spinners behave.</p>
+<h1 id="example-1-renderplot-based-on-a-reactive">Example 1: <code>renderPlot</code> based on a <code>reactive</code></h1>
+<p>In our examples we will be using an app with a single <code>Run</code> button. Clicking it results in an artificially slow computation leading to showing a histogram plot.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(shiny)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(shinycssloaders)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>create_histogram <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rnorm</span>(<span style="color:#ae81ff">100</span>) <span style="color:#f92672">|&gt;</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">hist</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>run_slowly <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(expr <span style="color:#f92672">=</span> <span style="color:#66d9ef">NULL</span>, time <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Sys.sleep</span>(time <span style="color:#f92672">=</span> time)
+</span></span><span style="display:flex;"><span>  expr
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ui <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">fluidPage</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">actionButton</span>(inputId <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;run&#34;</span>, label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Run&#34;</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plotOutput</span>(outputId <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;histogram&#34;</span>) <span style="color:#f92672">|&gt;</span> <span style="color:#a6e22e">withSpinner</span>()
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(input, output, session) {
+</span></span><span style="display:flex;"><span>  output<span style="color:#f92672">$</span>histogram <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">renderPlot</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>(input<span style="color:#f92672">$</span>run)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    histogram <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">create_histogram</span>() <span style="color:#f92672">|&gt;</span> 
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">run_slowly</span>()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">plot</span>(histogram)
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">shinyApp</span>(ui, server)
+</span></span></code></pre></div><p>Let&rsquo;s see how it works!</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/01_app.gif" alt="01_app_gif"></p>
+<p>It seems to be working as expected (the spinner is shown right after we click the button).</p>
+<p>Let&rsquo;s have a look at the reactive graph of this app.</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/01-reactive-graph-step_1.png" alt="01_app-reactive_graph-step_1"></p>
+<p>It&rsquo;s quite straightforward: our <code>output$histogram</code> is based on <code>input$run</code> value.</p>
+<blockquote>
+<p>The <code>plotObj</code> block might seem confusing. It is <a href="https://github.com/rstudio/shiny/blob/d84aa94762b4ffaf7533a007b6cb92c40f4f29af/R/render-plot.R#L124">created internally by the renderPlot function</a> to make the plot react to dimension changes (we don&rsquo;t need to worry about it in our examples).</p>
+</blockquote>
+<p>After we click the <em>Run</em> button, the input gets invalidated.</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/01-reactive-graph-step_2.png" alt="01_app-reactive_graph-step_2"></p>
+<p>As a result <code>output$histogram</code> gets invalidated. This triggers the <code>shiny:outputinvalidated</code> event which results in a spinner being shown.</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/01-reactive-graph-step_3.png" alt="01_app-reactive_graph-step_3"></p>
+<p>This means that a click of the button directly invalidates the output and that triggers the spinner.</p>
+<p>But what if we implement our app in a slightly different way?</p>
+<h1 id="example-2-renderplot-based-on-a-reactiveval">Example 2: <code>renderPlot</code> based on a <code>reactiveVal</code></h1>
+<p>Instead of using a <code>reactive</code> let&rsquo;s use <code>reactiveVal</code> along with an <code>observeEvent</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(shiny)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(shinycssloaders)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>create_histogram <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">rnorm</span>(<span style="color:#ae81ff">100</span>) <span style="color:#f92672">|&gt;</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">hist</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>run_slowly <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(expr <span style="color:#f92672">=</span> <span style="color:#66d9ef">NULL</span>, time <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Sys.sleep</span>(time <span style="color:#f92672">=</span> time)
+</span></span><span style="display:flex;"><span>  expr
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ui <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">fluidPage</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">actionButton</span>(inputId <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;run&#34;</span>, label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Run&#34;</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plotOutput</span>(outputId <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;histogram&#34;</span>) <span style="color:#f92672">|&gt;</span> <span style="color:#a6e22e">withSpinner</span>()
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(input, output, session) {
+</span></span><span style="display:flex;"><span>  histogram_value <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">reactiveVal</span>(<span style="color:#66d9ef">NULL</span>, label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;___histogram_value&#34;</span>)
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">observeEvent</span>(input<span style="color:#f92672">$</span>run, {
+</span></span><span style="display:flex;"><span>    histogram <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">create_histogram</span>() <span style="color:#f92672">|&gt;</span> 
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">run_slowly</span>()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">histogram_value</span>(histogram)
+</span></span><span style="display:flex;"><span>  }, label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;___observeEvent&#34;</span>)
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  output<span style="color:#f92672">$</span>histogram <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">renderPlot</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">req</span>(<span style="color:#a6e22e">histogram_value</span>())
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">plot</span>(<span style="color:#a6e22e">histogram_value</span>())
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">shinyApp</span>(ui, server)
+</span></span></code></pre></div><p>Let&rsquo;s see how the app behaves now:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/02_app.gif" alt="02_app_gif"></p>
+<p>That&rsquo;s weird, the app seems much more clunky. The spinner appears for a very short time right before showing the plot which results in this weird flickering effect.</p>
+<p>To understand why this is happening let&rsquo;s look at the reactive graph of the app:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/02-reactive-graph-step_1.png" alt="02_app-reactive_graph-step_1"></p>
+<p>It looks very similar to the previous one, we have an additional part that captures the relationship between <code>input$run</code> and <code>observeEvent</code>.</p>
+<p>Let&rsquo;s see   what happens after we click the <em>Run</em> button:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/02-reactive-graph-step_2.png" alt="02_app-reactive_graph-step_2"></p>
+<p>The <code>observeEvent</code> block gets invalidated. In the next step our <code>observeEvent</code> starts to run:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/02-reactive-graph-step_3.png" alt="02_app-reactive_graph-step_3"></p>
+<p>Notice that the slow calculation is part of the <code>observeEvent</code>, but <code>output$histogram</code> is not invalidated yet. This means that our slow computation is happening, but we are not showing the spinner!</p>
+<p>After the slow computation in the <code>observeEvent</code>, we update the <code>histogram_value</code> reactive value:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/02-reactive-graph-step_4.png" alt="02_app-reactive_graph-step_4"></p>
+<p>Which is the moment when <code>output$histogram</code> gets invalidated (and our spinner is shown)</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/02-reactive-graph-step_5.png" alt="02_app-reactive_graph-step_5"></p>
+<p>What is happening here is that our spinner is shown <strong>after</strong> the slow computation which leads to:</p>
+<ol>
+<li>The spinner being shown with a delay</li>
+<li>The flickering effect as the spinner is shown when we already computed the histogram</li>
+</ol>
+<p>To make the spinner behave like expected we can trigger the spinner from our server (e.g. using the <code>shinycssloaders::showSpinner</code> function):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>  <span style="color:#a6e22e">observeEvent</span>(input<span style="color:#f92672">$</span>run, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">showSpinner</span>(id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;histogram&#34;</span>)
+</span></span><span style="display:flex;"><span>    histogram <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">create_histogram</span>() <span style="color:#f92672">|&gt;</span> 
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">run_slowly</span>()
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">histogram_value</span>(histogram)
+</span></span><span style="display:flex;"><span>  })
+</span></span></code></pre></div><p>Now, before running the slow computation, we are sending a message to the browser to show a spinner for our histogram. Which fixes the issue:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/03_app.gif" alt="03_app_gif"></p>
+<p>The fix is not perfect though as there are other things that may go wrong here. Let&rsquo;s check it out in our next example.</p>
+<h1 id="example-3-another-reactive-element-blocking-the-observeevent-with-showspinner">Example 3: Another reactive element blocking the <code>observeEvent</code> with <code>showSpinner</code></h1>
+<p>What if our app is bigger and there are other reactive elements that might take a long time?</p>
+<p>Let&rsquo;s add a second <code>observeEvent</code> to our app:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>  <span style="color:#a6e22e">observeEvent</span>(input<span style="color:#f92672">$</span>run, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">run_slowly</span>(time <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>  }, priority <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><p>We use the <code>priority</code> argument here to force it to run before our <code>observeEvent</code> with <code>showSpinner</code>. Let&rsquo;s see how that impacts the app:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/04_app.gif" alt="04_app_gif"></p>
+<p>The spinner appears with a delay and there is no flickering.</p>
+<p>Let&rsquo;s check the reactive graph, we now have two <code>observeEvent</code> expressions that depend on <code>input$run</code>:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/04-reactive-graph-step_1.png" alt="04_app-reactive_graph-step_1"></p>
+<p>After clicking the <em>Run</em> button our input gets invalidated:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/04-reactive-graph-step_2.png" alt="04_app-reactive_graph-step_2"></p>
+<p>Which results in both observeEvents to be invalidated:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/04-reactive-graph-step_3.png" alt="04_app-reactive_graph-step_3"></p>
+<p>Now the observeEvent with the higher priority (<code>__observeEvent_1</code>) is performing computations:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/04-reactive-graph-step_4.png" alt="04_app-reactive_graph-step_4"></p>
+<p>Which effectively blocks <code>___observeEvent_2</code> from running <code>showSpinner</code> which causes the spinner to appear with a delay (As we can see in the reactive graph <code>__observeEvent_1</code> took 2030ms to run):</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/04-reactive-graph-step_5.png" alt="04_app-reactive_graph-step_5"></p>
+<p><code>__obseveEvent_2</code> starts to be computed - it shows the spinner and updates the <code>__histogram_value</code> reactive value:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/04-reactive-graph-step_6.png" alt="04_app-reactive_graph-step_6"></p>
+<p>The <code>___histogram_value</code> reactive value invalidates <code>output$histogram</code>:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/04-reactive-graph-step_7.png" alt="04_app-reactive_graph-step_7"></p>
+<p><code>output$histogram</code> starts to be computed:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/04-reactive-graph-step_8.png" alt="04_app-reactive_graph-step_8"></p>
+<p>When working on a big app, even if you are not using priorities, you might be surprised by one reactive element blocking another reactive element that is supposed to show a spinner.</p>
+<p>Fortunately, there is another solution provided by the <code>waiter</code> package. It involves adding the <code>waiter::triggerWaiter</code> function in our UI definition:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(waiter)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ui <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">fluidPage</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useWaiter</span>(),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">actionButton</span>(inputId <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;run&#34;</span>, label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Run&#34;</span>) <span style="color:#f92672">|&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">triggerWaiter</span>(id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;histogram&#34;</span>),
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">plotOutput</span>(outputId <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;histogram&#34;</span>)
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>Let&rsquo;s see how it influences the app:</p>
+<p><img src="/2024-08-04-know-your-shiny-reactive-graph/05_app.gif" alt="05_app_gif"></p>
+<p>Now the spinner appears immediately after clicking the <em>Run</em> button! The <code>triggerWaiter</code> function sets up a JavaScript snippet which watches for <em>click</em> events. When this event occurs, it runs additional JavaScript code to show the spinner.</p>
+<p>This means that this happens purely on the browser side and there is no need to wait for the server to send the message to the browser to show the spinner.</p>
+<p>That said, this comes at the cost of setting up this dependency yourself instead of relying on the reactive graph to do it for you.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Existing libraries like <code>shinyjs</code> or <code>waiter</code> make it easy to add spinners to your shiny application. However, if you do not structure your reactive graph properly this might result in:</p>
+<ol>
+<li>The spinner being shown with a delay</li>
+<li>Unpleasant flickering of components that are being computed</li>
+</ol>
+<p>To avoid those issues you can:</p>
+<ol>
+<li>Structure your reactive graph in a way where a user action will result in an immediate invalidation of outputs for which spinners have to be shown</li>
+<li>Use server side functions like <code>showSpinner</code></li>
+<li>Do things browser side with <code>triggerWaiter</code></li>
+</ol>
+<blockquote>
+<p>You can find the full examples on GitHub: <a href="https://github.com/szymanskir/know.your.reactive.graph.spinners">https://github.com/szymanskir/know.your.reactive.graph.spinners</a></p>
+</blockquote>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="/post/2024-07-28-2-prerequisites-for-synchronous-meetings-to-be-faster-than-async/"><span>2 Prerequisites For Synchronous Meetings To Be Faster Than Async</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2024 <a href="/">Ryszard Szymański</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>
