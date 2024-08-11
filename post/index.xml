@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Ryszard Szymański</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 04 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2 Examples Of Debugging With `base::trace`</title>
+      <link>/post/2024-08-10-2-examples-of-debugging-with-base-trace/</link>
+      <pubDate>Sat, 10 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2024-08-10-2-examples-of-debugging-with-base-trace/</guid>
+      <description>Introduction The base::trace function is one of my go-tos for debugging (alongside browser, debug/debugonce).
+It&amp;rsquo;s especially useful for debugging code that isn&amp;rsquo;t under your control, e.g. code in packages that you cannot edit yourself (unless you submit an Open Source pull request).
+base::trace allows me to avoid all the overhead of forking a package, creating a temporary version of it and installing it just for debugging purposes.
+In this post I&amp;rsquo;ll share two example situations where base::trace can be useful.</description>
+    </item>
+    
     <item>
       <title>Know Your Shiny Reactive Graph: 3 Examples How It May Impact Your Spinners</title>
       <link>/post/2024-08-04-know-your-shiny-reactive-graph-3-examples-how-it-may-impact-your-spinners/</link>
